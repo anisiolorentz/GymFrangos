@@ -3,3 +3,5 @@ venv/
 
 # Environmental variables
 .env
+
+.DS_Store
