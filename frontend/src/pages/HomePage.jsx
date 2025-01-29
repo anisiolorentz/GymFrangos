@@ -1,69 +1,32 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import logoImage from '../assets/frango.png' // Add image to assets folder
+import logoImage from '../assets/frango.png'
+import styles from './HomePage.module.css'
 
 const HomePage = () => {
   const navigate = useNavigate()
 
   const handleGetStarted = () => {
-    navigate('/login') // Navega para página de login
+    navigate('/login')
   }
 
   return (
-    <div className="home-page" style={{
-      backgroundColor: '#DC143C',
-      margin: 0,
-      padding: 0,
-      minHeight: '100vh',
-      width: '100vw',
-      textAlign: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      position: 'absolute', // Add this
-      top: 0,              // Add this
-      left: 0,             // Add this
-      color: 'white',
-      boxSizing: 'border-box',
-      overflowX: 'hidden',     // Block horizontal scroll only
-      overflowY: 'auto',       // Allow vertical scroll
-      fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif' // Add font-family
-    }}>
+    <div className={styles.homePage}>
       <header>
         <img 
           src={logoImage} 
           alt="GymFrangos Logo"
-          style={{
-            width: '200px',
-            height: 'auto',
-            marginBottom: '1rem'
-          }}
+          className={styles.logo}
         />
-        <h1 style={{
-          fontSize: '3.5rem',
-          fontWeight: 'bold',
-          margin: 0
-        }}>Bem vindo ao GymFrangos!</h1>
+        <h1 className={styles.title}>Bem vindo ao GymFrangos!</h1>
       </header>
       <main>
-        <section className="hero">
-          <h2>Sua jornada começa aqui</h2>
-          <p>Acompanhe sua evolução e alcance seus objetivos</p>
+        <section className={styles.hero}>
+          <h2 className={styles.subtitle}>Sua jornada começa aqui</h2>
+          <p className={styles.description}>Acompanhe sua evolução e alcance seus objetivos</p>
           <button 
             onClick={handleGetStarted}
-            style={{
-              padding: '12px 24px',
-              fontSize: '1.1rem',
-              backgroundColor: 'white',
-              color: '#8B0000',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
-            onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+            className={styles.button}
           >
             Começar Agora
           </button>
@@ -72,5 +35,4 @@ const HomePage = () => {
     </div>
   )
 }
-
 export default HomePage

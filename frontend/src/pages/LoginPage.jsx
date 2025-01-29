@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './LoginPage.module.css'
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -11,46 +12,22 @@ const LoginPage = () => {
     console.log('Login attempt:', formData)
   }
 
+  const handleGoogleSignIn = () => {
+    console.log('Google sign-in initiated')
+  }
+
   return (
-    <div className="login-page" style={{
-      backgroundColor: '#DC143C',
-      margin: 0,
-      padding: 0,
-      minHeight: '100vh',
-      width: '100vw',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      boxSizing: 'border-box',
-      overflow: 'hidden',
-      position: 'absolute',
-      top: 0,
-      left: 0
-    }}>
-      <div className="login-container" style={{
-        backgroundColor: 'rgba(0,0,0,0.2)',
-        padding: '2rem',
-        borderRadius: '10px',
-        width: '100%',
-        maxWidth: '400px'
-      }}>
-        <h1 style={{ marginBottom: '2rem' }}>Olá!</h1>
+    <div className={styles.loginPage}>
+      <div className={styles.loginContainer}>
+        <h1 className={styles.title}>Olá!</h1>
         
-        <form onSubmit={handleSubmit} style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem'
-        }}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <input
             type="email"
             placeholder="Email"
             value={formData.email}
             onChange={(e) => setFormData({...formData, email: e.target.value})}
-            style={{
-              padding: '0.8rem',
-              borderRadius: '5px',
-              border: 'none'
-            }}
+            className={styles.input}
           />
           
           <input
@@ -58,37 +35,33 @@ const LoginPage = () => {
             placeholder="Senha"
             value={formData.password}
             onChange={(e) => setFormData({...formData, password: e.target.value})}
-            style={{
-              padding: '0.8rem',
-              borderRadius: '5px',
-              border: 'none'
-            }}
+            className={styles.input}
           />
           
-          <button type="submit" style={{
-            padding: '0.8rem',
-            backgroundColor: 'white',
-            color: '#DC143C',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            fontWeight: 'bold'
-          }}>
+          <button type="submit" className={styles.button}>
             Entrar
           </button>
-          <button type="submit" style={{
-            padding: '0.8rem',
-            backgroundColor: 'white',
-            color: '#DC143C',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            fontWeight: 'bold'
-          }}>
+          <button type="button" className={styles.button}>
             Criar conta
           </button>
+
+          <div className={styles.divider}>
+            <span>ou</span>
+          </div>
+
+          <button 
+            type="button" 
+            onClick={handleGoogleSignIn}
+            className={`${styles.button} ${styles.googleButton}`}
+          >
+            <img 
+              src="https://www.google.com/favicon.ico" 
+              alt="Google logo" 
+              className={styles.googleIcon} 
+            />
+            Entrar com Google
+          </button>
         </form>
-        
       </div>
     </div>
   )
